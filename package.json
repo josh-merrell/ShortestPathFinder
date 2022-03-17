@@ -1,0 +1,28 @@
+{
+  "name": "shortest-path-finder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "NODE_ENV=development webpack",
+    "start": "NODE_ENV=development webpack serve --hot --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josh Merrell",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.7",
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.6",
+    "redux": "^4.0.5"
+  },
+  "keywords": [],
+  "description": ""
+}

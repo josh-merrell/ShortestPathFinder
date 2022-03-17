@@ -1,0 +1,67 @@
+Base Features:
+-Display initial grid (8 x 8 Undirected graph of nodes)
+-Each Node has properties and references to other nodes
+-'Find Shortest Path' button to start algorithm
+-'Reset' button to restore grid to initial
+
+
+State
+
+
+
+Dijkstra Algorithm Sequence of Operations:
+-Define initial node
+*distance of node Y is distance from initial node to Y. Starting distances will be infinite and improved step by step
+1. Mark All Nodes as unvisited. Create Set of unvisited nodes called 'unvisited'
+2. Set 'tentative distance' for each node to infinity. 'tv' represents distance to node V from initial node.
+3. Set Initial Node as 'current'
+4. For each UNVISITED neighbor node of 'current', update distance through 'current' to be Max of existing distance and 
+calculated.
+*if distance to 'current' node V is 6, and edge to node W has val of 3, distance to W through 'current' will be 9
+5. Mark 'current' as visited, remove it from 'unvisited' Set.
+*A visited node will never be checked again
+6. If the destination node has been visited, stop
+7, Otherwise, select unvisited node from Set with smallest tentative distance, set it as new 'current', repeat from 4
+
+Each Node needs:
+.neighbors: {array of nodes}
+.visited: {boolean}
+.tentDist: {number}
+
+
+11 12 13 14
+21 22 23 24
+31 32 33 34
+41 42 43 44
+
+const n = 4;
+const rows = [1,2,3,4];
+const columns = [1,2,3,4];
+
+
+
+Components:
+>>Start Page
+- Main Display (container)('n' <input>, 'submit' <button>,'find shortest path' <button>, 'reset' <button>, 'start_Node' <element>, 'dest_Node' <element>,
+ 'grid_name' <input>, 'save_grid' <button>)
+  - Grid (n rows)
+    - Row (n Nodes)
+
+const node11 = {
+    id = 11,
+    visited: false,
+    neighbors: [12, 21, 22],
+    tentDist: 0;
+}
+
+const node12 = {
+    id = 12,
+    visited: false,
+    neighbors: [11, 13, 21, 22, 23],
+    tentDist: infinity;
+}
+
+
+
+
+
