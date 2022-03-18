@@ -13,18 +13,18 @@
  import MainDisplay from './containers/MainDisplay.jsx';
  
  class App extends Component {
-   constructor(props) {
-     super(props);
-   }
- 
-   render() {
-     return(
-       <div>
-         <MainDisplay/>
-       </div>
-     );
-   }
- }
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return(
+      <div>
+        <MainDisplay/>
+      </div>
+    );
+  }
+}
  
  export default App;
  

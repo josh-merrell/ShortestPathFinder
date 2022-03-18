@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu Light', 'Century Gothic', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #393939;
+    background-color: aquamarine;
+}
+
+.node {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: teal
+}
+
+.node-text {
+    margin: auto;
+}
+
+#header {
+    text-align: center;
+    letter-spacing: .2em;
+    margin-bottom: 10px;
+}
+
+body {
+    padding-top:10px;
+}
+
+input {
+    margin: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+button {
+    padding: 3px;
+    margin: 3px;
+}
