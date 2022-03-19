@@ -1,11 +1,11 @@
-* {
+/* * {
     box-sizing: border-box;
     font-family: 'Ubuntu Light', 'Century Gothic', sans-serif;
     margin: 0;
     padding: 0;
     color: #393939;
-    background-color: aquamarine;
-}
+    background-color: var(--bg-color);
+} */
 
 .display {
     display: flex;
@@ -13,23 +13,114 @@
     justify-content: center;
 }
 
-.grid {
+.App {
+  /* background-color: var(--bg-color); */
+}
+
+
+.App-header {
+    font-family: 'Ubuntu Light', 'Century Gothic', sans-serif;
+    background-color: var(--bg-color);
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: cal(10px + 2vmin);
+}
+
+:root {
+    --bg-color: rgba(150, 150, 150, 1);
+
+    --button-color-1: grey;
+    --button-color-2: darkgrey;
+    --button-color-3: white;
+
+    --node-color-1: teal;
+    --node-color-2: lightblue;
+    --node-color-3: red;
+
+    --cols: 20;
+    --rows: 20;
+    --tile-size: 20px;
+    --border-width: 1px;
+
+    color: white;
+}
+
+.button-color-1 {
+    background-color: var(--button-color-1);
+}
+.button-color-2 {
+    background-color: var(--button-color-2);
+}
+.button-color-3 {
+    background-color: var(--button-color-3);
+}
+
+.node-color-1 {
+    background-color: var(--node-color-1);
+}
+.node-color-2 {
+    background-color: var(--node-color-2);
+}
+.node-color-3 {
+    background-color: var(--node-color-3);
+}
+
+.button-board {
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-color);
+}
+
+.place-walls-button {
+    /* background-color: var(--button-color-1); */
+}
+
+.place-start-button {
+    /* background-color: var(--button-color-1); */
+}
+
+.place-dest-button {
+    /* background-color: var(--button-color-1); */
+}
+
+.start-button {
+    /* background-color: var(--button-color-1); */
+}
+
+.grid-board {
     display: grid;
-    width: 90vmin;
-    height: 90vmin;
-    grid-template-rows: auto;
-    background-color: white;
+    grid-template-columns: repeat(var(--cols), var(--tile-size));
+    grid-gap: 4px;
+    align-self: flex-start;
+    justify-content: center;
+    margin: 10px;
+}
+
+.grid-square {
+    /* border-style: solid; */
+    border-radius: 5%;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border-style: solid;
+    border-color: black;
+    box-sizing: border-box;
+    border-width: var(--border-width);
+    background-color: var(--node-color-2);
+
 }
 
 .row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12.5%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(2%, 1fr));
     max-width: 100%;
 }
 .node {
     height: 80%;
-    border-radius: 50%;
-    background-color: teal;
+    border-radius: 5%;
+    background-color: white;
     width: 80%;
     margin: 0;
     text-align:center;
@@ -37,6 +128,10 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
+    border-style: solid;
+    border-top: 2px;
+    border-width: 5px;
+    border-color: black;
 }
 
 .nodeText {

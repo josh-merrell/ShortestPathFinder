@@ -4,6 +4,10 @@ import { useState } from 'react';
 const GridHeader = (props) => {
 
   const [newName, addNewName] = useState('');  
+  
+  function startDijkstra() {
+  
+  }
 
   return (
     <div className='gridheader' id='gridheader'>
@@ -18,6 +22,9 @@ const GridHeader = (props) => {
             props.onSaveGrid(newName);
         }}>
           Save Grid Config
+        </button>
+        <button onClick={() => startDijkstra()}>
+          Start Dijstra PathFinder
         </button>
     </div>
   );
