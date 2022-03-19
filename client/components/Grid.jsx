@@ -10,6 +10,7 @@ const Grid = (props) => {
         <Row
            key = {i}
            rowID = {i}
+           className = 'row'
            sideLength = {props.sideLength}
         />
     );

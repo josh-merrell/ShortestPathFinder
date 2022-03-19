@@ -25,15 +25,19 @@ class MainDisplay extends Component {
 
     render() {
         return (
-            <div className='grid_header'>
-                <h1>SHORTEST PATH FINDER</h1>
-                <GridHeader 
-                gridName={this.props.gridName}
-                onSaveGrid={this.props.onSaveGrid}
-                />
-                <Grid
-                sideLength={this.props.sideLength}
-                />
+            <div className='display'>
+              <div className='grid_header'>
+                  <h1>SHORTEST PATH FINDER</h1>
+                  <GridHeader 
+                  gridName={this.props.gridName}
+                  onSaveGrid={this.props.onSaveGrid}
+                  />
+              </div>
+              <div>
+              <Grid
+                  sideLength={this.props.sideLength}
+                  />
+              </div>
             </div>
         );
     }

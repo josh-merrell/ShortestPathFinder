@@ -2,14 +2,15 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ['./client/index.js', './client/styles.css'],
+  entry: './client/index.js',
   output: {
-    path: path.resolve(__dirname, 'build/'),
+    path: path.resolve(__dirname, './build/'),
     filename: 'bundle.js',
   },
   plugins: [new HtmlWebpackPlugin({ 
     template: 'index.html',
-    filename: './index.html'
+    filename: './index.html',
+    publicPath: process.env.NODE_ENV === 'production' ? 'build' : 'auto'
   })],
   resolve: {
     alias: {
