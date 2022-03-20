@@ -39,6 +39,7 @@
     --node-color-1: teal;
     --node-color-2: lightblue;
     --node-color-3: red;
+    --node-color-4: black;
 
     --cols: 20;
     --rows: 20;
@@ -75,19 +76,45 @@
 }
 
 .place-walls-button {
-    /* background-color: var(--button-color-1); */
+    background-color: var(--button-color-3);
+    border-width: 0px;
+}
+
+.place-walls-button-disabled {
+    pointer-events: none;
+    background-color: var(--button-color-1);
 }
 
 .place-start-button {
-    /* background-color: var(--button-color-1); */
+    background-color: var(--button-color-3);
+}
+.place-start-button-disabled {
+    pointer-events: none;
+    background-color: var(--button-color-1);
 }
 
 .place-dest-button {
-    /* background-color: var(--button-color-1); */
+    background-color: var(--button-color-3)
+}
+.place-dest-button-disabled {
+    pointer-events: none;
+    background-color: var(--button-color-1);
 }
 
 .start-button {
-    /* background-color: var(--button-color-1); */
+    background-color: var(--button-color-3)
+}
+.start-button-disabled {
+    pointer-events: none;
+    background-color: var(--button-color-1);
+}
+
+.reset-button {
+    background-color: var(--button-color-3)
+}
+.reset-button-disabled {
+    pointer-events: none;
+    background-color: var(--button-color-1);
 }
 
 .grid-board {
@@ -109,7 +136,18 @@
     box-sizing: border-box;
     border-width: var(--border-width);
     background-color: var(--node-color-2);
+}
 
+.grid-square-wall {
+    /* border-style: solid; */
+    border-radius: 5%;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border-style: solid;
+    border-color: black;
+    box-sizing: border-box;
+    border-width: var(--border-width);
+    background-color: var(--node-color-4);
 }
 
 .row {

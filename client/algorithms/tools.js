@@ -1,4 +1,4 @@
-export default function defaultState() {
+export const defaultState = () => {
     return {
         gameover: false,
         placeWalls: false,
@@ -13,9 +13,18 @@ const gridDefault = () => {
     const grid = {
         board: boardDefault(),
         start: '',
-        end: '',
+        dest: '',
     }
     return grid;
+}
+
+export const gridUpdate = (nodeID, changer, currentNode, existingNodes) => {
+   const grid = {
+       board: boardUpdate(nodeID, changer, currentNode, existingNodes),
+       start: '',
+       dest: '',
+   }
+   return grid;
 }
 
 const boardDefault = () => {
@@ -28,10 +37,13 @@ const boardDefault = () => {
             const node = {
                 r: r,
                 c: c,
+                key: `${r}-${c}`,
                 visited: false,
                 distThrough: Infinity,
                 isWall: false,
-                neighbors: getNeighbors(r, c)
+                neighbors: getNeighbors(r, c),
+                isStart: false,
+                isDest: false,
             }
             row.push(node);
         }
@@ -39,6 +51,25 @@ const boardDefault = () => {
     }
     return nodes;
 }
+
+export const boardUpdate = (nodeID, changer, currentNode, existingNodes) => {
+    let nodes = existingNodes;
+    for (let row of nodes) {
+        for (let i = 0; i < row.length; i++) {
+            let nodeObj = row[i];
+            if (nodeObj.key === nodeID) {
+              const changeProp = Object.keys(changer)[0];
+              let node = currentNode;
+              node[changeProp] = changer[changeProp];
+              console.log(`AFTER UPDATE, NODE PROP: ${node[changeProp]}`)
+              row.splice(i, 1, node);
+            }
+        }
+    }
+    return nodes;    
+}
+
+
 
 const getNeighbors = (nodeRow, nodeCol) => {
     const neighbors = [];

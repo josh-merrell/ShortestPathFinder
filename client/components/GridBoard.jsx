@@ -1,19 +1,28 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
 import GridSquare from './GridSquare.jsx';
 
 const GridBoard = (props) => {
 
   const grid = useSelector((state) => state.gridReducer.grid);
-  // console.log(`GRID: ${grid.board}`)
   const rows = grid.board;
-  // const { placeWalls, placeStart, placeDest, grid } = game;
+  const dispatch = useDispatch()
 
   const gridSquares = [];
   for (let row of rows) {
     for (let node of row) {
+      
+      const id = `${node.r}-${node.c}`;
       const gridSquare = (
-        <GridSquare color='3' key={`${node.r}-${node.c}`} visited={node.visited} distThrough={node.distThrough} isWall={node.isWall} neighbors={node.neighbors}
+        <GridSquare 
+          color='3' 
+          id={`${node.r}-${node.c}`} 
+          test={'YOOO'} 
+          visited={node.visited} 
+          distThrough={node.distThrough} 
+          isWall={node.isWall} 
+          neighbors={node.neighbors}
         />
       )
       gridSquares.push(gridSquare);
