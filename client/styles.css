@@ -77,7 +77,6 @@
 
 .place-walls-button {
     background-color: var(--button-color-3);
-    border-width: 0px;
 }
 
 .place-walls-button-disabled {
@@ -120,7 +119,7 @@
 .grid-board {
     display: grid;
     grid-template-columns: repeat(var(--cols), var(--tile-size));
-    grid-gap: 4px;
+    grid-gap: 3px;
     align-self: flex-start;
     justify-content: center;
     margin: 10px;
@@ -137,7 +136,29 @@
     border-width: var(--border-width);
     background-color: var(--node-color-2);
 }
+.grid-square:hover {
+    /* border-style: solid; */
+    border-radius: 5%;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border-style: solid;
+    border-color: black;
+    box-sizing: border-box;
+    border-width: var(--border-width);
+    background-color: var(--node-color-1);
+}
 
+.grid-square-start {
+    /* border-style: solid; */
+    border-radius: 5%;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border-style: solid;
+    border-color: black;
+    box-sizing: border-box;
+    border-width: var(--border-width);
+    background-color: green;
+}
 .grid-square-wall {
     /* border-style: solid; */
     border-radius: 5%;

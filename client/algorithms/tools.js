@@ -5,6 +5,7 @@ export const defaultState = () => {
         placeStart: false,
         placeDest: false,
         distance: 0,
+        mouseIsPressed: false,
         grid: gridDefault(),
     }
 }
@@ -19,9 +20,11 @@ const gridDefault = () => {
 }
 
 export const gridUpdate = (nodeID, changer, currentNode, existingNodes) => {
+   let newStart;
+   if (Object.keys(changer)[0] === 'isStart') newStart = currentNode.key;
    const grid = {
        board: boardUpdate(nodeID, changer, currentNode, existingNodes),
-       start: '',
+       start: newStart ? newStart : '',
        dest: '',
    }
    return grid;
@@ -61,7 +64,6 @@ export const boardUpdate = (nodeID, changer, currentNode, existingNodes) => {
               const changeProp = Object.keys(changer)[0];
               let node = currentNode;
               node[changeProp] = changer[changeProp];
-              console.log(`AFTER UPDATE, NODE PROP: ${node[changeProp]}`)
               row.splice(i, 1, node);
             }
         }

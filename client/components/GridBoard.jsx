@@ -17,12 +17,12 @@ const GridBoard = (props) => {
       const gridSquare = (
         <GridSquare 
           color='3' 
-          id={`${node.r}-${node.c}`} 
-          test={'YOOO'} 
+          id={`${node.r}-${node.c}`}
           visited={node.visited} 
           distThrough={node.distThrough} 
           isWall={node.isWall} 
           neighbors={node.neighbors}
+          isStart={node.isStart}
         />
       )
       gridSquares.push(gridSquare);
