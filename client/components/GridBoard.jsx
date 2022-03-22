@@ -8,6 +8,8 @@ const GridBoard = (props) => {
   const grid = useSelector((state) => state.gridReducer.grid);
   const rows = grid.board;
   const dispatch = useDispatch()
+  const resultArr = useSelector((state) => state.resultArr);
+
 
   const gridSquares = [];
   for (let row of rows) {
@@ -23,23 +25,21 @@ const GridBoard = (props) => {
           isWall={node.isWall} 
           neighbors={node.neighbors}
           isStart={node.isStart}
+          isDest={node.isDest}
+          isVisited={node.isVisited}
+          isInPath={node.isInPath}
         />
       )
       gridSquares.push(gridSquare);
     }
   }
-
-
-  // const grid = []
-
-  // for (let row = 0; row < 19; row++) {
-  //   grid.push([]);
-  //   for (let col = 0; col <= 19; col++) {
-  //     grid[row].push(<GridSquare key={`${row}${col}`} color='1'/>)
-  //   }
-  // }  
   return (
-    <div className='grid-board'>
+    <div 
+    className='grid-board'
+    onMouseDown={(e) => dispatch(({ type: 'Mouse_Pressed_To_True' }))}
+    onMouseUp={(e) => dispatch(({ type: 'Mouse_Pressed_To_False' }))}
+    draggable="false"
+    >
       {gridSquares}
     </div>
   );

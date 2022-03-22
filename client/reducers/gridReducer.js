@@ -1,5 +1,5 @@
 import * as types from '../constants/actionTypes';
-import { defaultState, gridUpdate }  from '../algorithms/tools.js'
+import { defaultState, gridUpdate }  from '../algorithms/tools.js';
 
 
 
@@ -19,6 +19,24 @@ const gridReducer = (state = defaultState(), action) => {
               placeStart: !state.placeStart
           };
 
+        case types.DEST_PLACER:
+          return {
+              ...state,
+              placeDest: !state.placeDest
+          };
+
+        case types.MOUSE_PRESSED_TO_FALSE:
+          return {
+              ...state,
+              mouseIsPressed: false
+          }
+        
+        case types.MOUSE_PRESSED_TO_TRUE:
+          return {
+              ...state,
+              mouseIsPressed: true
+          }
+
         case types.FLIP_WALL_STATE_MOUSE_DOWN:
           let id = action.payload.id;
           let rows = state.grid.board;
@@ -30,7 +48,7 @@ const gridReducer = (state = defaultState(), action) => {
                     const key = node.key;
                     if (key === id) {
                         const isWall_changer = {'isWall': !JSON.parse(action.payload.iswall)};
-                        grid = gridUpdate(id, isWall_changer, node, state.grid.board);
+                        grid = gridUpdate(id, isWall_changer, node, state.grid);
                     }
                 }
             }
@@ -43,11 +61,24 @@ const gridReducer = (state = defaultState(), action) => {
                     const key = node.key;
                     if (key === id) {
                         const isStart_changer = {'isStart': true};
-                        grid = gridUpdate(id, isStart_changer, node, state.grid.board);
+                        grid = gridUpdate(id, isStart_changer, node, state.grid);
                     }
                 }
             }
             return grid ? {...state, grid, placeStart: false,} : {...state}
+          }
+          if (state.placeDest && state.grid.dest.length === 0) {
+            let grid;
+            for (let row of rows) {
+                for (let node of row) {
+                    const key = node.key;
+                    if (key === id) {
+                        const isDest_changer = {'isDest': true};
+                        grid = gridUpdate(id, isDest_changer, node, state.grid);
+                    }
+                }
+            }
+            return grid ? {...state, grid, placeDest: false,} : {...state}
           }
           return {...state}
 
@@ -62,7 +93,7 @@ const gridReducer = (state = defaultState(), action) => {
                     const key = node.key;
                     if (key === id) {
                         const isWall_changer = {'isWall': !JSON.parse(action.payload.iswall)};
-                        grid = gridUpdate(id, isWall_changer, node, state.grid.board);
+                        grid = gridUpdate(id, isWall_changer, node, state.grid);
                     }
                 }
             }
@@ -82,9 +113,29 @@ const gridReducer = (state = defaultState(), action) => {
 
         case types.RESET_BOARD:
             return defaultState();
+        
+        
+        case types.START_RUNNING:
+            return {...state, isRunning: true}
+
+        case types.UPDATE_NODE_TO_VISITED:
+            let grid;
+            const isVisited_changer = {'isVisited': true};
+            grid = gridUpdate(action.payload.key, isVisited_changer, action.payload, state.grid)
+            return grid ? {...state, grid} : {...state}
+
+            
+        case types.ADD_NODE_TO_PATH:
+            const isInPath_changer = {'isInPath': true};
+            grid = gridUpdate(action.payload.key, isInPath_changer, action.payload, state.grid)
+            return grid ? {...state, grid} : {...state}
+
+
         default: {
             return state;
         }
+
+
     }
 };
 

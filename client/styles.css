@@ -40,6 +40,8 @@
     --node-color-2: lightblue;
     --node-color-3: red;
     --node-color-4: black;
+    --node-color-5: rgb(156, 235, 235);
+    --node-color-6: yellow;
 
     --cols: 20;
     --rows: 20;
@@ -115,6 +117,9 @@
     pointer-events: none;
     background-color: var(--button-color-1);
 }
+.button-TRUE {
+    background-color: yellow;
+}
 
 .grid-board {
     display: grid;
@@ -159,6 +164,17 @@
     border-width: var(--border-width);
     background-color: green;
 }
+.grid-square-dest {
+    /* border-style: solid; */
+    border-radius: 5%;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border-style: solid;
+    border-color: black;
+    box-sizing: border-box;
+    border-width: var(--border-width);
+    background-color: red;
+}
 .grid-square-wall {
     /* border-style: solid; */
     border-radius: 5%;
@@ -169,6 +185,26 @@
     box-sizing: border-box;
     border-width: var(--border-width);
     background-color: var(--node-color-4);
+}
+.grid-square-visited {
+    border-radius: 5%;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border-style: solid;
+    border-color: black;
+    box-sizing: border-box;
+    border-width: var(--border-width);
+    background-color: var(--node-color-5);  
+}
+.grid-square-path {
+    border-radius: 5%;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border-style: solid;
+    border-color: black;
+    box-sizing: border-box;
+    border-width: var(--border-width);
+    background-color: var(--node-color-6);  
 }
 
 .row {

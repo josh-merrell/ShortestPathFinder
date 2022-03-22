@@ -1,12 +1,14 @@
 export const defaultState = () => {
     return {
         gameover: false,
+        isRunning: false,
         placeWalls: false,
         placeStart: false,
         placeDest: false,
         distance: 0,
         mouseIsPressed: false,
         grid: gridDefault(),
+        resultArr: [],
     }
 }
 
@@ -19,13 +21,15 @@ const gridDefault = () => {
     return grid;
 }
 
-export const gridUpdate = (nodeID, changer, currentNode, existingNodes) => {
+export const gridUpdate = (nodeID, changer, currentNode, existingGridState) => {
    let newStart;
+   let newDest;
    if (Object.keys(changer)[0] === 'isStart') newStart = currentNode.key;
+   if (Object.keys(changer)[0] === 'isDest') newDest = currentNode.key;
    const grid = {
-       board: boardUpdate(nodeID, changer, currentNode, existingNodes),
-       start: newStart ? newStart : '',
-       dest: '',
+       board: boardUpdate(nodeID, changer, currentNode, existingGridState),
+       start: newStart ? newStart : existingGridState.start,
+       dest: newDest ? newDest : existingGridState.dest,
    }
    return grid;
 }
@@ -44,9 +48,12 @@ const boardDefault = () => {
                 visited: false,
                 distThrough: Infinity,
                 isWall: false,
-                neighbors: getNeighbors(r, c),
+                previousNode: null,
                 isStart: false,
                 isDest: false,
+                isVisited: false,
+                isInPath: false,
+                neighbors: getNeighbors(r, c),
             }
             row.push(node);
         }
@@ -55,8 +62,8 @@ const boardDefault = () => {
     return nodes;
 }
 
-export const boardUpdate = (nodeID, changer, currentNode, existingNodes) => {
-    let nodes = existingNodes;
+export const boardUpdate = (nodeID, changer, currentNode, existingGridState) => {
+    let nodes = existingGridState.board;
     for (let row of nodes) {
         for (let i = 0; i < row.length; i++) {
             let nodeObj = row[i];
@@ -72,29 +79,11 @@ export const boardUpdate = (nodeID, changer, currentNode, existingNodes) => {
 }
 
 
-
 const getNeighbors = (nodeRow, nodeCol) => {
     const neighbors = [];
-    if (nodeRow - 1 > 0) {
-        for (let c = nodeCol - 1; c <= nodeCol + 1; c++) {
-            if (c > 0 && c <= 20) {
-                // neighbors.push({r: nodeRow-1, c: c});
-                neighbors.push(`${nodeRow-1}-${c}`)
-            }
-        }
-    }
-    if (nodeRow + 1 <= 20) {
-        for (let c = nodeCol - 1; c <= nodeCol + 1; c++) {
-            if (c > 0 && c <= 20) {
-                // neighbors.push({r: nodeRow+1, c: c});
-                neighbors.push(`${nodeRow + 1}-${c}`)
-            }
-        }
-
-    }
-    // if (nodeCol - 1 > 0) neighbors.push({r: nodeRow, c: nodeCol - 1})
+    if (nodeRow - 1 > 0) neighbors.push(`${nodeRow-1}-${nodeCol}`);
+    if (nodeRow + 1 <= 20) neighbors.push(`${nodeRow + 1}-${nodeCol}`)
     if (nodeCol - 1 > 0) neighbors.push(`${nodeRow}-${nodeCol-1}`)
-    // if (nodeCol + 1 <= 20) neighbors.push({r: nodeRow, c: nodeCol + 1})
     if (nodeCol + 1 <= 20) neighbors.push(`${nodeRow}-${nodeCol+1}`)
     return neighbors
 }
