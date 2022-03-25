@@ -19,9 +19,26 @@ export default function Buttons(props) {
       for (let i = 0; i < visitedNodesInOrder.length; i++) {
           const visitedNode = visitedNodesInOrder[i];
           const actionObj = { type: 'Update_Node_to_Visited', payload: visitedNode };
-          setTimeout(() => {dispatch(actionObj)}, 15 * i);
+          setTimeout(() => {dispatch(actionObj)}, 5 * i);
       }  
     }
+
+    // const animateVisitedNodes = (visitedNodesInOrder) => {
+    //     for (let i = 0; i <= visitedNodesInOrder.length; i++) {
+    //         if (i === visitedNodesInOrder.length) {
+    //             const finalNode = visitedNodesInOrder.pop();
+    //             setTimeout(() => {
+    //                 animateShortestPath(finalNode);
+    //             }, 10 * i);
+    //         }
+    //         setTimeout(() => {
+    //             const node = visitedNodesInOrder[i];
+    //             document.getElementById(`${node.key}`).className = 'grid-square-visited';
+    //         }, 10 * i);
+    //     }
+    // } 
+      
+ 
 
     const animateShortestPath = (finalNode) => {
       const shortestPath = [];
@@ -30,11 +47,13 @@ export default function Buttons(props) {
         shortestPath.unshift(currentNode);
         currentNode = currentNode.previousNode;
       }
-    //   for (let i = shortestPath.length - 1; i >= 0; i--) {
       for (let i = 0; i < shortestPath.length; i++) {
         const pathNode = shortestPath[i];
         const actionObj = { type: 'Add_Node_To_Path', payload: pathNode };
         setTimeout(() => {dispatch(actionObj)}, 1000 + (50 * i));
+        // setTimeout(() => {
+        // document.getElementById(`${pathNode.key}`).className = 'grid-square-path';
+        // }, 50 * i);
       }
     }
 

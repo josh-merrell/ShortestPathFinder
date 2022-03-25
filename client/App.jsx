@@ -12,7 +12,7 @@
 import React, { Component } from 'react';
 import Buttons from './components/Buttons.jsx';
 import GridBoard from './components/GridBoard.jsx';
-import GridSquare from './components/GridSquare.jsx';
+import Maps from './components/Maps.jsx';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
       </header>
       <Buttons/>
       <GridBoard />
+      <Maps/>
     </div>
   )
 }

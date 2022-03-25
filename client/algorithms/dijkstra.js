@@ -51,7 +51,6 @@ const updateUnvisitedNeighbors = (node, unvisitedNodes) => {
               }
           }
       }
-        // console.log(`UPDATED: DISTTHROUGH ${otherNode.distThrough}, PREV-NODE: ${otherNode.previousNode}`)
 }
 
 export default dijkstra;

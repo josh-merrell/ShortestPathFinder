@@ -29,22 +29,32 @@
     font-size: cal(10px + 2vmin);
 }
 
+.mapBar {
+    font-family: 'Ubuntu Light', 'Century Gothic', sans-serif;
+    background-color: var(--bg-color);
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: cal(10px + 2vmin);    
+}
+
 :root {
-    --bg-color: rgba(150, 150, 150, 1);
+    --bg-color: #2b2d42;
 
     --button-color-1: grey;
     --button-color-2: darkgrey;
     --button-color-3: white;
 
-    --node-color-1: teal;
-    --node-color-2: lightblue;
+    --node-color-1: #2B2D42;
+    --node-color-2: #FFFFFF;
     --node-color-3: red;
     --node-color-4: black;
-    --node-color-5: rgb(156, 235, 235);
-    --node-color-6: yellow;
+    --node-color-5: #8d99ae;
+    --node-color-6: #f8f32b;
 
-    --cols: 20;
-    --rows: 20;
+    --cols: 13;
+    --rows: 13;
     --tile-size: 20px;
     --border-width: 1px;
 
@@ -132,18 +142,18 @@
 
 .grid-square {
     /* border-style: solid; */
-    border-radius: 5%;
+    border-radius: 0%;
     width: var(--tile-size);
     height: var(--tile-size);
     border-style: solid;
-    border-color: black;
+    border-color: #2b2d42;
     box-sizing: border-box;
     border-width: var(--border-width);
     background-color: var(--node-color-2);
 }
 .grid-square:hover {
     /* border-style: solid; */
-    border-radius: 5%;
+    border-radius: 0%;
     width: var(--tile-size);
     height: var(--tile-size);
     border-style: solid;
@@ -151,22 +161,24 @@
     box-sizing: border-box;
     border-width: var(--border-width);
     background-color: var(--node-color-1);
+    cursor: default;
 }
 
 .grid-square-start {
     /* border-style: solid; */
-    border-radius: 5%;
+    border-radius: 0%;
     width: var(--tile-size);
     height: var(--tile-size);
     border-style: solid;
     border-color: black;
     box-sizing: border-box;
     border-width: var(--border-width);
-    background-color: green;
+    background-image: url("./assets/start-arrow.svg");
+    background-color: yellow
 }
 .grid-square-dest {
     /* border-style: solid; */
-    border-radius: 5%;
+    border-radius: 0%;
     width: var(--tile-size);
     height: var(--tile-size);
     border-style: solid;
@@ -177,7 +189,7 @@
 }
 .grid-square-wall {
     /* border-style: solid; */
-    border-radius: 5%;
+    border-radius: 0%;
     width: var(--tile-size);
     height: var(--tile-size);
     border-style: solid;
@@ -187,7 +199,15 @@
     background-color: var(--node-color-4);
 }
 .grid-square-visited {
-    border-radius: 5%;
+    border-radius: 0%;
+    animation-name: visitedAnimation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    /* animation-direction: alternate; */
+    animation-iteration-count: 1;
+    /* animation-fill-mode: forwards;
+    animation-play-state: running; */
     width: var(--tile-size);
     height: var(--tile-size);
     border-style: solid;
@@ -196,6 +216,30 @@
     border-width: var(--border-width);
     background-color: var(--node-color-5);  
 }
+
+@keyframes visitedAnimation {
+    0% {
+      transform: scale(0.3);
+      background-color: #f8f32b;
+      border-radius: 100%;
+    }
+  
+    50% {
+      background-color: #2b2D42;
+    }
+  
+    75% {
+      transform: scale(1.2);
+      background-color: #556177;
+    }
+  
+    100% {
+      transform: scale(1);
+      background-color: #8d99ae;
+    }
+  }
+
+  
 .grid-square-path {
     border-radius: 5%;
     width: var(--tile-size);
