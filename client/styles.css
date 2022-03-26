@@ -53,8 +53,8 @@
     --node-color-5: #8d99ae;
     --node-color-6: #f8f32b;
 
-    --cols: 13;
-    --rows: 13;
+    --cols: 18;
+    --rows: 18;
     --tile-size: 20px;
     --border-width: 1px;
 
@@ -215,6 +215,12 @@
     box-sizing: border-box;
     border-width: var(--border-width);
     background-color: var(--node-color-5);  
+}
+
+.mapsButtons {
+    color: black;
+    border: solid 1px;
+    background-color: var(--button-color-3);
 }
 
 @keyframes visitedAnimation {

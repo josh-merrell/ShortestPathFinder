@@ -14,6 +14,7 @@ const dijkstra = (board, startNodeID, destNodeID) => {
       sortNodesByDistance(unvisitedNodes);  
       while (unvisitedNodes[0].isWall) unvisitedNodes.shift();
       const closestNode = unvisitedNodes.shift();  
+      if (closestNode.distThrough === Infinity) return visitedNodesInOrder;
     //   console.log(`CLOSEST NODE: ${closestNode.key}, DIST: ${closestNode.distThrough}`)
       closestNode.visited = true;
       visitedNodesInOrder.push(closestNode);
@@ -46,6 +47,7 @@ const updateUnvisitedNeighbors = (node, unvisitedNodes) => {
       for (let neighborID of unvisitedNeighborIDs) {
           for (let otherNode of unvisitedNodes) {
               if (neighborID === otherNode.key) {
+                if (otherNode.isWall) continue;
                 otherNode.distThrough = Math.min(otherNode.distThrough, node.distThrough + 1);
                 otherNode.previousNode = node;
               }

@@ -41,6 +41,7 @@ export default function Buttons(props) {
  
 
     const animateShortestPath = (finalNode) => {
+      if (finalNode.key !== grid.dest) return;
       const shortestPath = [];
       let currentNode = finalNode;
       while (currentNode.previousNode) {

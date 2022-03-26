@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Maps = () => {
 
@@ -20,10 +21,18 @@ const Maps = () => {
       <select id='availableMaps' name='maps'>
           {/* option for each el in stored array of maps */}
       </select>
-      <button id='Load Map'>Load Map</button>
+      <Link to='/api/' >
+        <button type='button' class='mapsButtons' id='Load Map'>
+            Load Map
+        </button>
+      </Link>
       <button id='Delete Map'>Delete Map</button>
       <input id='New Map Name' type="text" placeholder="map name"></input>
-      <button id='Save Map'>Save Map</button>
+      <Link to='/api/maps' >
+        <button type='button' class='mapsButtons' id='Save Map'>
+          Save Map
+        </button>
+      </Link>
     </div>
   )
 }

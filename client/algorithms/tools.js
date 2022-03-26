@@ -36,8 +36,8 @@ export const gridUpdate = (nodeID, changer, currentNode, existingGridState) => {
 }
 
 const boardDefault = () => {
-    const rows = 13
-    const cols = 13
+    const rows = 18
+    const cols = 18
     const nodes = []
     for (let r = 1; r <= rows; r++) {
         const row = []
@@ -83,8 +83,8 @@ export const boardUpdate = (nodeID, changer, currentNode, existingGridState) => 
 const getNeighbors = (nodeRow, nodeCol) => {
     const neighbors = [];
     if (nodeRow - 1 > 0) neighbors.push(`${nodeRow-1}-${nodeCol}`);
-    if (nodeRow + 1 <= 13) neighbors.push(`${nodeRow + 1}-${nodeCol}`)
+    if (nodeRow + 1 <= 18) neighbors.push(`${nodeRow + 1}-${nodeCol}`)
     if (nodeCol - 1 > 0) neighbors.push(`${nodeRow}-${nodeCol-1}`)
-    if (nodeCol + 1 <= 13) neighbors.push(`${nodeRow}-${nodeCol+1}`)
+    if (nodeCol + 1 <= 18) neighbors.push(`${nodeRow}-${nodeCol+1}`)
     return neighbors
 }
