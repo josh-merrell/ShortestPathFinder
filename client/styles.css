@@ -53,8 +53,8 @@
     --node-color-5: #8d99ae;
     --node-color-6: #f8f32b;
 
-    --cols: 18;
-    --rows: 18;
+    --cols: 20;
+    --rows: 20;
     --tile-size: 20px;
     --border-width: 1px;
 
@@ -134,7 +134,7 @@
 .grid-board {
     display: grid;
     grid-template-columns: repeat(var(--cols), var(--tile-size));
-    grid-gap: 3px;
+    grid-gap: 0px;
     align-self: flex-start;
     justify-content: center;
     margin: 10px;
