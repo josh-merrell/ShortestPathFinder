@@ -19,7 +19,7 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <h1 className='App-title'>Dijkstra Path Finder</h1>
+        <h1 className='App-title'>~Get To It~</h1>
       </header>
       {/* <Router>
         <Route 
